@@ -16,6 +16,11 @@
 		F87213D0297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213CF297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift */; };
 		F87213DF297C48F800FB289A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213DE297C48F800FB289A /* Model.swift */; };
 		F87213E1297C4AD900FB289A /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E0297C4AD900FB289A /* TextFieldView.swift */; };
+		F87213E3297C4DB900FB289A /* StrengthBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E2297C4DB900FB289A /* StrengthBarView.swift */; };
+		F87213E6297C595F00FB289A /* ZxcvbnSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F87213E5297C595F00FB289A /* ZxcvbnSwift */; };
+		F87213E8297C6A3400FB289A /* CheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E7297C6A3400FB289A /* CheckerView.swift */; };
+		F87213EA297C6B6500FB289A /* GeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E9297C6B6500FB289A /* GeneratorView.swift */; };
+		F87213EE297C862800FB289A /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213ED297C862800FB289A /* SuggestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,10 @@
 		F87213CF297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVerifierUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F87213DE297C48F800FB289A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F87213E0297C4AD900FB289A /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		F87213E2297C4DB900FB289A /* StrengthBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthBarView.swift; sourceTree = "<group>"; };
+		F87213E7297C6A3400FB289A /* CheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerView.swift; sourceTree = "<group>"; };
+		F87213E9297C6B6500FB289A /* GeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorView.swift; sourceTree = "<group>"; };
+		F87213ED297C862800FB289A /* SuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87213E6297C595F00FB289A /* ZxcvbnSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				F87213B2297C470700FB289A /* PasswordVerifierApp.swift */,
-				F87213DC297C48C300FB289A /* TextView */,
+				F87213EB297C6BAA00FB289A /* Views */,
 				F87213DD297C48E000FB289A /* ViewModel */,
 				F87213B6297C470900FB289A /* Assets.xcassets */,
 				F87213B8297C470900FB289A /* Preview Content */,
@@ -132,13 +142,15 @@
 			path = PasswordVerifierUITests;
 			sourceTree = "<group>";
 		};
-		F87213DC297C48C300FB289A /* TextView */ = {
+		F87213DC297C48C300FB289A /* CheckerViews */ = {
 			isa = PBXGroup;
 			children = (
-				F87213B4297C470700FB289A /* ContentView.swift */,
+				F87213E7297C6A3400FB289A /* CheckerView.swift */,
+				F87213E2297C4DB900FB289A /* StrengthBarView.swift */,
+				F87213ED297C862800FB289A /* SuggestionView.swift */,
 				F87213E0297C4AD900FB289A /* TextFieldView.swift */,
 			);
-			path = TextView;
+			path = CheckerViews;
 			sourceTree = "<group>";
 		};
 		F87213DD297C48E000FB289A /* ViewModel */ = {
@@ -147,6 +159,24 @@
 				F87213DE297C48F800FB289A /* Model.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F87213EB297C6BAA00FB289A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F87213B4297C470700FB289A /* ContentView.swift */,
+				F87213DC297C48C300FB289A /* CheckerViews */,
+				F87213EC297C6BC200FB289A /* GeneratorViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F87213EC297C6BC200FB289A /* GeneratorViews */ = {
+			isa = PBXGroup;
+			children = (
+				F87213E9297C6B6500FB289A /* GeneratorView.swift */,
+			);
+			path = GeneratorViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +195,9 @@
 			dependencies = (
 			);
 			name = PasswordVerifier;
+			packageProductDependencies = (
+				F87213E5297C595F00FB289A /* ZxcvbnSwift */,
+			);
 			productName = PasswordVerifier;
 			productReference = F87213AF297C470700FB289A /* PasswordVerifier.app */;
 			productType = "com.apple.product-type.application";
@@ -237,6 +270,9 @@
 				Base,
 			);
 			mainGroup = F87213A6297C470700FB289A;
+			packageReferences = (
+				F87213E4297C595F00FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */,
+			);
 			productRefGroup = F87213B0297C470700FB289A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,9 +316,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87213DF297C48F800FB289A /* Model.swift in Sources */,
+				F87213EA297C6B6500FB289A /* GeneratorView.swift in Sources */,
+				F87213EE297C862800FB289A /* SuggestionView.swift in Sources */,
 				F87213B5297C470700FB289A /* ContentView.swift in Sources */,
 				F87213E1297C4AD900FB289A /* TextFieldView.swift in Sources */,
 				F87213B3297C470700FB289A /* PasswordVerifierApp.swift in Sources */,
+				F87213E3297C4DB900FB289A /* StrengthBarView.swift in Sources */,
+				F87213E8297C6A3400FB289A /* CheckerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +647,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F87213E4297C595F00FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scr037/zxcvbn-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F87213E5297C595F00FB289A /* ZxcvbnSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F87213E4297C595F00FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */;
+			productName = ZxcvbnSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F87213A7297C470700FB289A /* Project object */;
 }

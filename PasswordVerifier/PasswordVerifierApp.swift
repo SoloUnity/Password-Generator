@@ -13,6 +13,7 @@ struct PasswordVerifierApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(Model())
+                .tint(.cyan)
         }
     }
 }
