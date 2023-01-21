@@ -14,6 +14,8 @@
 		F87213C4297C470900FB289A /* PasswordVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213C3297C470900FB289A /* PasswordVerifierTests.swift */; };
 		F87213CE297C470900FB289A /* PasswordVerifierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213CD297C470900FB289A /* PasswordVerifierUITests.swift */; };
 		F87213D0297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213CF297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift */; };
+		F87213DF297C48F800FB289A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213DE297C48F800FB289A /* Model.swift */; };
+		F87213E1297C4AD900FB289A /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E0297C4AD900FB289A /* TextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		F87213C9297C470900FB289A /* PasswordVerifierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordVerifierUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87213CD297C470900FB289A /* PasswordVerifierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVerifierUITests.swift; sourceTree = "<group>"; };
 		F87213CF297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVerifierUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F87213DE297C48F800FB289A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F87213E0297C4AD900FB289A /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				F87213B2297C470700FB289A /* PasswordVerifierApp.swift */,
-				F87213B4297C470700FB289A /* ContentView.swift */,
+				F87213DC297C48C300FB289A /* TextView */,
+				F87213DD297C48E000FB289A /* ViewModel */,
 				F87213B6297C470900FB289A /* Assets.xcassets */,
 				F87213B8297C470900FB289A /* Preview Content */,
 			);
@@ -125,6 +130,23 @@
 				F87213CF297C470900FB289A /* PasswordVerifierUITestsLaunchTests.swift */,
 			);
 			path = PasswordVerifierUITests;
+			sourceTree = "<group>";
+		};
+		F87213DC297C48C300FB289A /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				F87213B4297C470700FB289A /* ContentView.swift */,
+				F87213E0297C4AD900FB289A /* TextFieldView.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
+		F87213DD297C48E000FB289A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F87213DE297C48F800FB289A /* Model.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87213DF297C48F800FB289A /* Model.swift in Sources */,
 				F87213B5297C470700FB289A /* ContentView.swift in Sources */,
+				F87213E1297C4AD900FB289A /* TextFieldView.swift in Sources */,
 				F87213B3297C470700FB289A /* PasswordVerifierApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

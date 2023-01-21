@@ -12,6 +12,7 @@ struct PasswordVerifierApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(Model())
         }
     }
 }
