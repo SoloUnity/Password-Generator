@@ -44,6 +44,8 @@ struct SuggestionItemView: View {
             }
         }
         .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
         
     }
 }

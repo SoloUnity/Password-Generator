@@ -38,19 +38,38 @@ struct GraphView: View {
                     .foregroundColor(.gray)
             }
             
-            Text("Strength Visualization")
+            Text("Password Strength Visualization")
                 .padding(.vertical)
                 .font(.title)
                 .bold()
             
             Chart(items) { item in
                 
-                BarMark(
-                    x: .value("Passwords", item.type),
-                    y: .value("Profit", (item.value > 0) ? item.value : 0.0)
+                if item.value < 0 {
+                    BarMark(
+                        x: .value("Passwords", item.type),
+                        y: .value("Profit", 0.0)
 
-                )
-                .foregroundStyle((item.type == "Your Password") ? getColour(model: model).gradient : Color.blue.gradient)
+                    )
+                    .foregroundStyle((item.type == "Your Password") ? getColour(model: model).gradient : Color.blue.gradient)
+                }
+                else if item .value > 1000 {
+                    BarMark(
+                        x: .value("Passwords", item.type),
+                        y: .value("Profit", 1000.0)
+
+                    )
+                    .foregroundStyle((item.type == "Your Password") ? getColour(model: model).gradient : Color.blue.gradient)
+                }
+                else {
+                    BarMark(
+                        x: .value("Passwords", item.type),
+                        y: .value("Profit", (item.value > 0) ? item.value : 0.0)
+
+                    )
+                    .foregroundStyle((item.type == "Your Password") ? getColour(model: model).gradient : Color.blue.gradient)
+                }
+                
             }
             .frame(height: 300)
 

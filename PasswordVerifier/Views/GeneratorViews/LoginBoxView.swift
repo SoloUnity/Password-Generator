@@ -65,12 +65,13 @@ struct LoginBoxView: View {
                 Image(systemName: "lock")
                 
                 if showPassword {
-                    TextField(LocalizedStringKey("Password"), text: $authModel.passwordField)
+                    TextField(LocalizedStringKey("Password"), text: $authModel.passwordField, axis: .vertical)
                         .keyboardType(.default)
                         .foregroundColor(.white)
                         .disableAutocorrection(true)
                         .submitLabel(.done)
                         .focused($focusedField, equals: .passwordField)
+                        .lineLimit(1...3)
 
                 }
                 else {
@@ -81,7 +82,6 @@ struct LoginBoxView: View {
                         .disableAutocorrection(true)
                         .submitLabel(.done)
                         .focused($focusedField, equals: .passwordField)
-                    
                 }
                 
                 
@@ -92,7 +92,7 @@ struct LoginBoxView: View {
                 } label: {
                     
                     Image(systemName: showPassword ? "eye" : "eye.slash")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("BarColour"))
                         .opacity(0.5)
                     
                 }

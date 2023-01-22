@@ -12,6 +12,9 @@ struct StrengthBarView: View {
     
     @EnvironmentObject var model : Model
     @State var barColour : Color = .clear
+    @AppStorage("ShowLogin") var showLogin = false
+    @AppStorage("ShowSuggestions") var showSuggestions = false
+    @AppStorage("ShowGraph") var showGraph = false
     
     var body: some View {
         
@@ -23,8 +26,8 @@ struct StrengthBarView: View {
             
             // Percent bar that goes up
             RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .frame(maxWidth: ((showLogin || showSuggestions || showGraph) ? 500 * CGFloat(model.passwordStrength) : 700 * CGFloat(model.passwordStrength)), maxHeight: 10)
                 .animation(.linear, value: model.passwordStrength)
-                .frame(maxWidth: 500 * CGFloat(model.passwordStrength), maxHeight: 10)
                 .foregroundColor(getColour(model: model))
             
         }

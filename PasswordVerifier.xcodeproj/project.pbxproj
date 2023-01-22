@@ -21,8 +21,6 @@
 		F87213EA297C6B6500FB289A /* GeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213E9297C6B6500FB289A /* GeneratorView.swift */; };
 		F87213EE297C862800FB289A /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213ED297C862800FB289A /* SuggestionView.swift */; };
 		F87213F1297C9C7C00FB289A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213F0297C9C7C00FB289A /* Utility.swift */; };
-		F87213F4297CDA3B00FB289A /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F87213F3297CDA3B00FB289A /* Zxcvbn */; };
-		F87213F7297CDA8700FB289A /* ZxcvbnSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F87213F6297CDA8700FB289A /* ZxcvbnSwift */; };
 		F87213FA297CFC6A00FB289A /* ExtraSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213F9297CFC6A00FB289A /* ExtraSuggestionsView.swift */; };
 		F87213FC297D172A00FB289A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213FB297D172A00FB289A /* LoginView.swift */; };
 		F87213FE297D17CD00FB289A /* LoginBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87213FD297D17CD00FB289A /* LoginBoxView.swift */; };
@@ -31,6 +29,8 @@
 		F8721405297D244800FB289A /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8721404297D244800FB289A /* AlertModel.swift */; };
 		F8721407297D2C6700FB289A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8721406297D2C6700FB289A /* GraphView.swift */; };
 		F8721409297D3B3A00FB289A /* SuggestionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8721408297D3B3A00FB289A /* SuggestionItemView.swift */; };
+		F872140C297D6FAF00FB289A /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F872140B297D6FAF00FB289A /* Zxcvbn */; };
+		F872140F297D720500FB289A /* ZxcvbnSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F872140E297D720500FB289A /* ZxcvbnSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87213F4297CDA3B00FB289A /* Zxcvbn in Frameworks */,
-				F87213F7297CDA8700FB289A /* ZxcvbnSwift in Frameworks */,
+				F872140C297D6FAF00FB289A /* Zxcvbn in Frameworks */,
+				F872140F297D720500FB289A /* ZxcvbnSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +243,8 @@
 			);
 			name = PasswordVerifier;
 			packageProductDependencies = (
-				F87213F3297CDA3B00FB289A /* Zxcvbn */,
-				F87213F6297CDA8700FB289A /* ZxcvbnSwift */,
+				F872140B297D6FAF00FB289A /* Zxcvbn */,
+				F872140E297D720500FB289A /* ZxcvbnSwift */,
 			);
 			productName = PasswordVerifier;
 			productReference = F87213AF297C470700FB289A /* PasswordVerifier.app */;
@@ -319,8 +319,8 @@
 			);
 			mainGroup = F87213A6297C470700FB289A;
 			packageReferences = (
-				F87213F2297CDA3B00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */,
-				F87213F5297CDA8700FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */,
+				F872140A297D6FAF00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */,
+				F872140D297D720500FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */,
 			);
 			productRefGroup = F87213B0297C470700FB289A /* Products */;
 			projectDirPath = "";
@@ -715,7 +715,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F87213F2297CDA3B00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */ = {
+		F872140A297D6FAF00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/quickbit/zxcvbn.swift";
 			requirement = {
@@ -723,7 +723,7 @@
 				kind = branch;
 			};
 		};
-		F87213F5297CDA8700FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */ = {
+		F872140D297D720500FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scr037/zxcvbn-swift";
 			requirement = {
@@ -734,14 +734,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F87213F3297CDA3B00FB289A /* Zxcvbn */ = {
+		F872140B297D6FAF00FB289A /* Zxcvbn */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F87213F2297CDA3B00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */;
+			package = F872140A297D6FAF00FB289A /* XCRemoteSwiftPackageReference "zxcvbn" */;
 			productName = Zxcvbn;
 		};
-		F87213F6297CDA8700FB289A /* ZxcvbnSwift */ = {
+		F872140E297D720500FB289A /* ZxcvbnSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F87213F5297CDA8700FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */;
+			package = F872140D297D720500FB289A /* XCRemoteSwiftPackageReference "zxcvbn-swift" */;
 			productName = ZxcvbnSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

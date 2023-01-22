@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Zxcvbn
 import ZxcvbnSwift
 import SwiftUI
 
@@ -26,12 +25,11 @@ class Model: ObservableObject {
     @MainActor
     func checkStrength() {
         
-        
-        let checker = DBZxcvbn()
         var digit = false
         var upper = false
         var sym = false
         
+        let checker = DBZxcvbn()
         let strength = checker.passwordStrength(self.textField)
         
         withAnimation(.easeInOut) {
@@ -39,6 +37,7 @@ class Model: ObservableObject {
                 self.passwordStrength = 0
             }
             else {
+                
                 self.passwordStrength = Double(round(10 * ((Double(strength!.score) + 1) * 0.2)) / 10)
             }
             
@@ -114,6 +113,13 @@ class Model: ObservableObject {
         }
     }
     
+    func testPhrase() {
+        
+        withAnimation(.easeInOut) {
+            self.textField = self.keyPhrase
+
+        }
+    }
     func generateAcronym() {
         
         withAnimation(.easeInOut) {

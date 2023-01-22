@@ -32,7 +32,7 @@ struct GeneratorView: View {
             Divider()
             
             HStack {
-                Text("Password: ")
+                Text("Acronym: ")
                     .bold()
                     .padding(.trailing, 12)
                 
@@ -69,7 +69,7 @@ struct GeneratorView: View {
             .padding(.bottom)
             
             HStack (alignment: .top) {
-                Text("Key Phrase: ")
+                Text("Phrase: ")
                     .bold()
                 
                 Spacer()
@@ -93,13 +93,12 @@ struct GeneratorView: View {
                 
                 Button {
                     
-                    let pasteboard = UIPasteboard.general
-                    pasteboard.string = model.keyPhrase
+                    showLogin = true
+                    authModel.passwordField = model.keyPhrase
                     
                 } label : {
-                    
-                    Image(systemName: "doc.on.doc.fill")
-                        .foregroundColor(.gray)
+                    Image(systemName: "chevron.forward.circle.fill")
+                        .foregroundColor(.blue)
 
                 }
                 
@@ -124,17 +123,29 @@ struct GeneratorView: View {
             
             HStack {
                 
-                Button {
+                Menu("Test Password") {
                     
-                    model.testPassword()
+                    Button {
+                        
+                        model.testPassword()
+                    } label: {
+                        Text("Test Acronym")
+                    }
                     
-                } label: {
-                    Text("Test Password")
-                        .foregroundColor(Color("BarColour"))
-                        .padding(4)
-                        .background(.gray)
-                        .cornerRadius(8)
+                    Button {
+                        
+                        model.testPhrase()
+                        
+                    } label: {
+                        Text("Test Phrase")
+                    }
+
                 }
+                .foregroundColor(Color("BarColour"))
+                .padding(4)
+                .background(.gray)
+                .cornerRadius(8)
+                
                 
                 Spacer()
                 

@@ -43,7 +43,7 @@ struct CheckerView: View {
             
             
             TextFieldView()
-                .frame(minHeight:45, maxHeight: 60)
+                .frame(minHeight:45, maxHeight: 120)
                 
             
             
@@ -52,7 +52,6 @@ struct CheckerView: View {
                 
                 StrengthBarView()
                     .padding(.top)
-                    .frame(maxWidth: 500)
                 
                 HStack  {
                     

@@ -16,12 +16,13 @@ struct TextFieldView: View {
         HStack {
             Image(systemName: "lock")
             
-            TextField("Enter Your Password" , text: $model.textField)
+            TextField("Enter Your Password" , text: $model.textField, axis: .vertical)
                 .keyboardType(.default)
                 .disableAutocorrection(true)
                 .onChange(of: model.textField) { _ in
                     model.checkStrength()
                 }
+                .lineLimit(1...3)
             
             Spacer()
             
