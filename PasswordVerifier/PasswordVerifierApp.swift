@@ -13,7 +13,8 @@ struct PasswordVerifierApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(Model())
-                .tint(.cyan)
+                .environmentObject(AuthModel())
+                .environmentObject(AlertModel())
         }
     }
 }

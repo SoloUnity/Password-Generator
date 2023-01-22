@@ -13,26 +13,33 @@ struct TextFieldView: View {
     
     var body: some View {
         
-        ZStack {
+        HStack {
+            Image(systemName: "lock")
             
-            HStack {
-                Image(systemName: "lock")
-                    .foregroundColor(.black)
+            TextField("Enter Your Password" , text: $model.textField)
+                .keyboardType(.default)
+                .disableAutocorrection(true)
+                .onChange(of: model.textField) { _ in
+                    model.checkStrength()
+                }
+            
+            Spacer()
+            
+            if model.textField != "" {
                 
-                TextField("Enter Your Password" , text: $model.textField)
-                    .keyboardType(.default)
-                    .foregroundColor(.black)
-                    .disableAutocorrection(true)
+                Button {
+                    model.textField = ""
                     
+                    model.checkStrength()
+                } label: {
+                    Image(systemName: "multiply.circle.fill")
+                        .foregroundColor(.gray)
+                }
             }
-            .padding(.horizontal)
-            
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 1)
-                
-
-            
         }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(15)
     }
 }
 

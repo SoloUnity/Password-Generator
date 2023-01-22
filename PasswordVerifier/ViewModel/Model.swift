@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import Zxcvbn
 import ZxcvbnSwift
 import SwiftUI
 
 class Model: ObservableObject {
     
     @Published var textField = ""
+    @Published var generatedPass = "Your Future Password"
+    @Published var keyPhrase = "Your Future Key Phrase"
+    @Published var generatedCrack = "0.0"
     @Published var passwordStrength : Double = 0
     @Published var crackTime = "0.0"
     @Published var isCount = false
@@ -22,15 +26,27 @@ class Model: ObservableObject {
     @MainActor
     func checkStrength() {
         
+        
         let checker = DBZxcvbn()
         var digit = false
         var upper = false
         var sym = false
         
         let strength = checker.passwordStrength(self.textField)
-        self.passwordStrength = Double(strength!.score) * 0.25
-        self.crackTime = strength!.crackTime!
         
+        withAnimation(.easeInOut) {
+            if self.textField == "" {
+                self.passwordStrength = 0
+            }
+            else {
+                self.passwordStrength = Double(round(10 * ((Double(strength!.score) + 1) * 0.2)) / 10)
+            }
+            
+            self.crackTime = strength?.crackTime ?? "0"
+
+        }
+        
+                
         for letter in textField {
             if letter.isNumber {
                 digit = true
@@ -67,7 +83,7 @@ class Model: ObservableObject {
                 self.isSymbol = false
             }
             
-            if self.textField.count >= 6 {
+            if self.textField.count >= 12 {
                 self.isCount = true
             }
             else {
@@ -75,4 +91,62 @@ class Model: ObservableObject {
             }
         }
     }
+    
+    func getPassword(length: Int) {
+        
+        let password = generatePassword(length: length)
+        
+        let checker = DBZxcvbn()
+        let strength = checker.passwordStrength(password)
+        
+        withAnimation(.easeInOut) {
+            self.generatedCrack = strength?.crackTime ?? "0"
+            self.generatedPass = password
+            self.keyPhrase = passwordToSentence(password: password)
+        }
+    }
+    
+    func testPassword() {
+        
+        withAnimation(.easeInOut) {
+            self.textField = self.generatedPass
+
+        }
+    }
+    
+    func generateAcronym() {
+        
+        withAnimation(.easeInOut) {
+            self.generatedPass = createAcronym(from: self.keyPhrase)
+        }
+    }
+    
+    func generatePasswordAcro() {
+        withAnimation(.easeInOut) {
+            self.keyPhrase = passwordToSentence(password: self.generatedPass)
+        }
+    }
+    /*
+    func estimateCrackTime(password: String, hashFunction: String, crackingSpeed: Double) -> Double {
+        let possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+        let passwordLength = Double(password.count)
+        let possibleCombinations = pow(Double(possibleChars.count), passwordLength)
+        let hashSecurity = getHashSecurity(hashFunction)
+        let timeNeeded = possibleCombinations / (crackingSpeed * hashSecurity)
+        return timeNeeded
+    }
+
+    func getHashSecurity(_ hashFunction: String) -> Double {
+        // Return a value representing the relative security of the hash function,
+        // based on the specific hash function used
+        switch hashFunction {
+            case "MD5": return 0.01
+            case "SHA-1": return 0.1
+            case "SHA-256": return 1.0
+            case "SHA-512": return 10.0
+            default: return 1.0
+        }
+    }
+    */
+
 }

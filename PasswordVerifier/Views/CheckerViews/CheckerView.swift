@@ -10,115 +10,74 @@ import SwiftUI
 struct CheckerView: View {
     
     @EnvironmentObject var model:Model
+    @AppStorage("ShowGraph") var showGraph = false
+    @State var extraInfo = false
     
     var body: some View {
         
-        ZStack {
+        
+        VStack (alignment: .leading) {
             
-            Image("Background")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-
-            VStack {
-                TextFieldView()
-                    .frame(maxWidth: 500 , minHeight:45, maxHeight: 45)
+            HStack(alignment: .top) {
+                Text("Password Strength Checker")
+                    .font(.title)
+                    .bold()
+                    .padding(.bottom)
+                
+                Spacer()
+                
+                Button {
+                    
+                    withAnimation(.easeIn) {
+                        self.showGraph.toggle()
+                    }
+                    
+                } label: {
+                    Image(systemName: "info.circle")
+                        .padding(.top, 8)
+                }
+            }
+            
+            
+            Divider()
+            
+            
+            TextFieldView()
+                .frame(minHeight:45, maxHeight: 60)
+                
+            
+            
+            
+            if model.textField != "" {
                 
                 StrengthBarView()
                     .padding(.top)
+                    .frame(maxWidth: 500)
                 
-                HStack {
+                HStack  {
                     
-                    Text(String(model.passwordStrength))
+                    
+                    Text("Time to Crack: ") + Text(timeFrame(model: model))
+                    
                     
                     Spacer()
                     
-                    Text(timeFrame())
-                }
-                
-                if !(model.isDigit && model.isUpper && model.isCount && model.isSymbol) {
-                    Divider()
+                    Text(getWordStrength(model: model))
+                        .foregroundColor(getColour(model: model))
                     
-                    SuggestionView()
                 }
-                
-                
-                
-                
             }
-            .frame(maxWidth: 500)
-            .padding()
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20 , style: .continuous))
+            
+            
         }
-        .navigationTitle("Password Checker Tool")
-        
+        .padding()
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20 , style: .continuous))
+
         
         
     }
     
-    func timeFrame() -> String {
-        
-        var time = ""
-        var plural = false
-        
-        let calendar = Calendar(identifier: .gregorian)
-
-        let components = calendar
-            .dateComponents([.year, .month, .day, .hour, .minute, .second],
-                            from: Date(),
-                            to: Date() + (Double(model.crackTime) ?? 0))
-        
-        if components.year! > 100 {
-            return "Centuries"
-        }
-        else if components.year! > 0 {
-            time = String(components.year!) + " year"
-            if components.year! > 1 {
-                plural = true
-            }
-        }
-        else if components.month! > 0 {
-            time = String(components.month!) + " month"
-            if components.month! > 1 {
-                plural = true
-            }
-        }
-        else if components.day! > 0 {
-            time = String(components.second!) + " day"
-            if components.day! > 1 {
-                plural = true
-            }
-        }
-        else if components.hour! > 0 {
-            time = String(components.second!) + " hour"
-            if components.hour! > 1 {
-                plural = true
-            }
-        }
-        else if components.minute! > 0 {
-            time = String(components.minute!) + " minute"
-            if components.minute! > 1 {
-                plural = true
-            }
-        }
-        else if components.second! > 0 {
-            time = String(components.second!) + " second"
-            if components.second! > 1 {
-                plural = true
-            }
-        }
-        else {
-            time = "Instantly"
-        }
-        
-        if plural {
-            time += "s"
-            return time
-        }
-        else {
-            return time
-        }
-    }
+    
 }
 
 

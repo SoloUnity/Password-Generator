@@ -18,49 +18,28 @@ struct StrengthBarView: View {
         ZStack (alignment: .leading){
             
             RoundedRectangle (cornerRadius: 20, style: .continuous)
-                .frame (width: 500, height: 10)
-                .foregroundColor(Color.black.opacity (0.1))
+                .frame (height: 10)
+                .foregroundColor(Color("BarColour").opacity(0.1))
             
             // Percent bar that goes up
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .animation(.linear, value: model.passwordStrength)
-                .animation(.linear, value: getStrength())
-                .frame(width: getStrength() ? (500 * 0.1) : (500 * CGFloat(model.passwordStrength)), height: 10)
-                .foregroundColor(barColour)
+                .frame(maxWidth: 500 * CGFloat(model.passwordStrength), maxHeight: 10)
+                .foregroundColor(getColour(model: model))
             
         }
         .onChange(of: model.textField, perform: { _ in
             model.checkStrength()
-            getColour()
         })
+        .onAppear {
+            model.checkStrength()
+        }
     }
     
-    func getColour() {
-        
-        switch model.passwordStrength {
-        case 0:
-            self.barColour = .red
-        case 0.25:
-            self.barColour = .orange
-        case 0.5:
-            self.barColour = .yellow
-        case 0.75:
-            self.barColour = .green
-        case 1:
-            self.barColour = .blue
-        default:
-            self.barColour = .clear
-        }
-        
-    }
     
-    func getStrength() -> Bool {
-        if model.passwordStrength == 0 && model.textField != "" {
-            return true
-        }
-        
-        return false
-    }
+    
+    
+    
     
     
 }
